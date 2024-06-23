@@ -68,7 +68,7 @@ A cross-platform application client with a persistent menu bar for enhanced prod
 
 1. Obtain a [Gemini API Key](https://aistudio.google.com/app/apikey).
 2. Click on the button below to deploy:
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAmery2010%2FTalkWithGemini&project-name=talk-with-gemini&env=GEMINI_API_KEY&env=ACCESS_PASSWORD&repository-name=talk-with-gemini)
+   [![Deploy with Vercel](https://vercel.com/button)]
 3. Start using.
 
 ## Access Password
