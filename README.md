@@ -68,7 +68,7 @@ A cross-platform application client with a persistent menu bar for enhanced prod
 
 1. Obtain a [Gemini API Key](https://aistudio.google.com/app/apikey).
 2. Click on the button below to deploy:
-   [![Deploy with Vercel](https://vercel.com/button)]
+   ![Deploy with Vercel](https://vercel.com/button)
 3. Start using.
 
 ## Access Password
