@@ -12,19 +12,12 @@ Deploy your private Gemini application for free with one click, supporting Gemin
 
 
 [![Web][Web-image]][web-url]
-[![MacOS][MacOS-image]][download-url]
-[![Windows][Windows-image]][download-url]
-[![Linux][Linux-image]][download-url]
 
 
 
 [web-url]: https://gemini-ultra-iota.vercel.app/
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAmery2010%2FTalkWithGemini&project-name=talk-with-gemini&env=GEMINI_API_KEY&env=ACCESS_PASSWORD&repository-name=talk-with-gemini)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Amery2010/TalkWithGemini)
-
-![cover](./public/screenshots/screenshots.png)
 
 A straightforward interface supporting image recognition and voice conversations.
 
