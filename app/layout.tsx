@@ -17,7 +17,7 @@ const APP_NAME = 'Gemini-Ultra'
 const APP_DEFAULT_TITLE = 'Gemini-Ultra'
 const APP_TITLE_TEMPLATE = '%s - PWA App'
 const APP_DESCRIPTION =
-  'Easily deploy your private Gemini application for free with just one click, supporting models such as Gemini 1.5 Pro, Gemini 1.5 Flash, Gemini Pro, and Gemini Pro Vision.'
+  'Gemini AI is a revolutionary AI application designed to enhance your everyday life. From generating creative content to answering your questions, Gemini AI provides intelligent assistance, making your tasks easier and more efficient. Experience the power of AI at your fingertips.'
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
