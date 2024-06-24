@@ -10,4 +10,6 @@ export default {
   'ru-RU': 'Русский',
   'zh-CN': '简体中文',
   'zh-TW': '繁體中文',
-} as const
+  'bn-BD': 'বাংলা', // Bengali (Bangladesh)
+  'hi-IN': 'हिन्दी', // Hindi (India)
+} as const;

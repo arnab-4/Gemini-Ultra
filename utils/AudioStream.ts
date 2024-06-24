@@ -15,7 +15,7 @@ class AudioStream {
     this.audioContext = new AudioContext()
   }
   public play(options: AudioOptions) {
-    // 如果音频正在播放则进行缓存
+
     if (this.isPlaying) {
       this.queue.push(options)
       return false
