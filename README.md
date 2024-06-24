@@ -1,6 +1,6 @@
 
 <div align="center">
-<h1 align="center">Talk With Gemini</h1>
+<h1 align="center">Gemini Ultra</h1>
 
 ![GitHub deployments](https://img.shields.io/github/deployments/Amery2010/TalkWithGemini/Production)
 ![GitHub Release](https://img.shields.io/github/v/release/Amery2010/TalkWithGemini)
