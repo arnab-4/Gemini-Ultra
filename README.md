@@ -11,9 +11,6 @@
 Deploy your private Gemini application for free with one click, supporting Gemini 1.5 Pro, Gemini 1.5 Flash, Gemini Pro, and Gemini Pro Vision models.
 
 
-[![Web][Web-image]][web-url]
-
-
 
 [web-url]: https://gemini-ultra-iota.vercel.app/
 
@@ -26,9 +23,6 @@ A straightforward interface supporting image recognition and voice conversations
 ![Gemini 1.5 Flash](./public/screenshots/pc-screenshot-1.png)
 
 Supports Gemini 1.5 and Gemini 1.5 Flash multimodal models.
-
-
-![Tray app](./docs/images/trayapp.png)
 
 A cross-platform application client with a persistent menu bar for enhanced productivity.
 
