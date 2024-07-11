@@ -49,7 +49,7 @@ A cross-platform application client with a persistent menu bar for enhanced prod
 - Well-designed UI with responsive design and dark mode support.
 - Extremely fast initial screen load time with support for streaming responses.
 - Static deployment allows deployment on any service supporting static pages like GitHub Pages, Cloudflare, Vercel, etc.
-- Multilingual support: English, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, German, French, Portuguese, Russian, and Arabic.
+- Multilingual support: English, Hindi, Bengali, Simplified Chinese, Traditional Chinese, Japanese, Korean, Spanish, German, French, Portuguese, Russian, and Arabic.
 
 ## Roadmap
 
