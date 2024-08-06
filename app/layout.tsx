@@ -5,7 +5,7 @@ import StoreProvider from '@/components/StoreProvider'
 import I18Provider from '@/components/I18nProvider'
 import { Toaster } from '@/components/ui/toaster'
 import { isUndefined } from 'lodash-es'
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import 'katex/dist/katex.min.css'
 import 'highlight.js/styles/a11y-light.css'
 import './globals.css'
@@ -82,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </StoreProvider>
         </ThemeProvider>
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   )

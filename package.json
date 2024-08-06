@@ -33,6 +33,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@serwist/next": "^9.0.3",
     "@traptitech/markdown-it-katex": "^3.6.0",
+    "@vercel/speed-insights": "^1.0.12",
     "@xiangfa/polly": "^0.3.6",
     "ai": "^2.2.37",
     "browser-image-compression": "^2.0.2",
