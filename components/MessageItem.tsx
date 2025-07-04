@@ -5,7 +5,8 @@ import Lightbox from 'yet-another-react-lightbox'
 import LightboxFullscreen from 'yet-another-react-lightbox/plugins/fullscreen'
 import MarkdownIt from 'markdown-it'
 import markdownHighlight from 'markdown-it-highlightjs'
-import highlight from 'highlight.js'
+import highlight from 'highlight.js/lib/core'
+import python from 'highlight.js/lib/languages/python'
 import markdownKatex from '@traptitech/markdown-it-katex'
 import Clipboard from 'clipboard'
 import { User, Bot, RotateCw, Sparkles, Copy, CopyCheck, PencilLine, Eraser, Volume2, Eye } from 'lucide-react'
@@ -23,6 +24,9 @@ import { sentenceSegmentation } from '@/utils/common'
 import { upperFirst, isFunction, find } from 'lodash-es'
 
 import 'yet-another-react-lightbox/styles.css'
+
+// Register Python language with highlight.js
+highlight.registerLanguage('python', python)
 
 interface Props extends Message {
   onRegenerate?: (id: string) => void
