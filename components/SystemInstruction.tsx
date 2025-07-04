@@ -2,16 +2,12 @@ import { useState, useEffect, useCallback, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import MarkdownIt from 'markdown-it'
 import markdownHighlight from 'markdown-it-highlightjs'
-import highlight from 'highlight.js/lib/core'
-import python from 'highlight.js/lib/languages/python'
+import highlight from 'highlight.js'
 import markdownKatex from '@traptitech/markdown-it-katex'
 import { X } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { upperFirst } from 'lodash-es'
-
-// Register Python language with highlight.js
-highlight.registerLanguage('python', python)
 
 type Props = {
   prompt: string
