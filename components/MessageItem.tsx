@@ -26,7 +26,7 @@ import { upperFirst, isFunction, find } from 'lodash-es'
 import 'yet-another-react-lightbox/styles.css'
 
 // Register Python language with highlight.js
-highlight.registerLanguage('python', (python.default || python)())
+highlight.registerLanguage('python', python.default || python)
 
 interface Props extends Message {
   onRegenerate?: (id: string) => void
