@@ -66,6 +66,9 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@babel/preset-react": "^7.22.0",
     "@tauri-apps/cli": "^1.5.14",
     "@types/crypto-js": "^4.2.2",
     "@types/lodash-es": "^4.17.12",
@@ -74,6 +77,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
+    "babel-loader": "^9.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.0.3",
