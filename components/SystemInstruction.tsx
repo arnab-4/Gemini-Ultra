@@ -11,7 +11,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { upperFirst } from 'lodash-es'
 
 // Register Python language with highlight.js
-highlight.registerLanguage('python', python)
+highlight.registerLanguage('python', python())
 
 type Props = {
   prompt: string
