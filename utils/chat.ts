@@ -4,6 +4,15 @@ import { getVisionPrompt } from '@/utils/prompt'
 import { Model, OldVisionModel } from '@/constant/model'
 import { isUndefined, pick, values } from 'lodash-es'
 
+const MODEL_ALIASES: Record<string, string> = {
+  'gemini-1.5-flash': 'gemini-1.5-flash-latest',
+  'gemini-1.5-pro': 'gemini-1.5-pro-latest',
+}
+
+function normalizeModel(model: string) {
+  return MODEL_ALIASES[model] ?? model
+}
+
 export type RequestProps = {
   model?: string
   systemInstruction?: string
@@ -58,9 +67,14 @@ export default function chat({
   safety,
 }: RequestProps) {
   const genAI = new GoogleGenerativeAI(apiKey)
-  const modelParams: ModelParams = { model, generationConfig, safetySettings: getSafetySettings(safety) }
+  const normalizedModel = normalizeModel(model)
+  const modelParams: ModelParams = {
+    model: normalizedModel,
+    generationConfig,
+    safetySettings: getSafetySettings(safety),
+  }
   if (systemInstruction) {
-    if (model.startsWith('gemini-1.5')) {
+    if (normalizedModel.startsWith('gemini-1.5')) {
       modelParams.systemInstruction = systemInstruction
     } else {
       const systemInstructionMessages = [
@@ -75,7 +89,7 @@ export default function chat({
   if (isUndefined(message)) {
     throw new Error('Request parameter error')
   }
-  if (OldVisionModel.includes(model as Model)) {
+  if (OldVisionModel.includes(normalizedModel as Model)) {
     const textMessages: Message[] = []
     const imageMessages: InlineDataPart[] = message.parts.filter((part) =>
       part.inlineData?.mimeType.startsWith('image/'),
