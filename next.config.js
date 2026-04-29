@@ -13,7 +13,7 @@ module.exports = async (phase) => {
     images: {
       unoptimized: mode === 'export',
     },
-    // Keep SWC minification disabled but use SWC transforms for build compatibility
+    // Keep SWC minification disabled but use SWC transforms to avoid Babel unicode regex build failures
     swcMinify: false,
     experimental: {
       forceSwcTransforms: true,
