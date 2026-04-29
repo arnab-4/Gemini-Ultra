@@ -13,10 +13,10 @@ module.exports = async (phase) => {
     images: {
       unoptimized: mode === 'export',
     },
-    // Disable SWC and use Babel instead to avoid native addon issues
+    // Keep SWC minification disabled but use SWC transforms for build compatibility
     swcMinify: false,
     experimental: {
-      forceSwcTransforms: false,
+      forceSwcTransforms: true,
     },
   }
   
