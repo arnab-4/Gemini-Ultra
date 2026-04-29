@@ -4,6 +4,9 @@ import { getVisionPrompt } from '@/utils/prompt'
 import { Model, OldVisionModel } from '@/constant/model'
 import { isUndefined, pick, values } from 'lodash-es'
 
+/**
+ * Map unsupported model IDs to their supported "-latest" aliases to prevent v1beta 404s.
+ */
 const MODEL_ALIASES: Record<string, string> = {
   'gemini-1.5-flash': 'gemini-1.5-flash-latest',
   'gemini-1.5-pro': 'gemini-1.5-pro-latest',
