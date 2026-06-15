@@ -13,7 +13,13 @@ module.exports = async (phase) => {
     images: {
       unoptimized: mode === 'export',
     },
+    // Disable SWC and use Babel instead to avoid native addon issues
+    swcMinify: false,
+    experimental: {
+      forceSwcTransforms: false,
+    },
   }
+  
   if (mode === 'export') {
     nextConfig.output = 'export'
     // Only used for static deployment, the default deployment directory is the root directory
