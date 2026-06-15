@@ -1,8 +1,8 @@
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai'
 import type { InlineDataPart, ModelParams } from '@google/generative-ai'
 import { getVisionPrompt } from '@/utils/prompt'
-import { Model, OldVisionModel } from '@/constant/model'
-import { isUndefined, pick, values } from 'lodash-es'
+import { DefaultModel, LegacyVisionModel, supportsSystemInstruction } from '@/constant/model'
+import { isUndefined, pick } from 'lodash-es'
 
 export type RequestProps = {
   model?: string
@@ -51,7 +51,7 @@ function getSafetySettings(level: string) {
 export default function chat({
   messages = [],
   systemInstruction,
-  model = Model['Gemini Pro'],
+  model = DefaultModel,
   apiKey,
   baseUrl,
   generationConfig,
@@ -60,7 +60,7 @@ export default function chat({
   const genAI = new GoogleGenerativeAI(apiKey)
   const modelParams: ModelParams = { model, generationConfig, safetySettings: getSafetySettings(safety) }
   if (systemInstruction) {
-    if (model.startsWith('gemini-1.5')) {
+    if (supportsSystemInstruction(model)) {
       modelParams.systemInstruction = systemInstruction
     } else {
       const systemInstructionMessages = [
@@ -75,7 +75,7 @@ export default function chat({
   if (isUndefined(message)) {
     throw new Error('Request parameter error')
   }
-  if (OldVisionModel.includes(model as Model)) {
+  if (LegacyVisionModel.includes(model as (typeof LegacyVisionModel)[number])) {
     const textMessages: Message[] = []
     const imageMessages: InlineDataPart[] = message.parts.filter((part) =>
       part.inlineData?.mimeType.startsWith('image/'),

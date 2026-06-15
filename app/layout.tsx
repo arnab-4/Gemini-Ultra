@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: APP_TITLE_TEMPLATE,
   },
   description: APP_DESCRIPTION,
-  keywords: ['Gemini', 'Gemini Pro', 'Gemini 1.5', 'Gemini Chat', 'AI', 'voice', 'Free Chatgpt', 'Chatgpt'],
+  keywords: ['Gemini', 'Gemini 3.5 Flash', 'Gemini 2.5 Pro', 'Gemini 2.5 Flash', 'Gemini Chat', 'AI', 'voice'],
   icons: {
     icon: {
       type: 'image/svg+xml',

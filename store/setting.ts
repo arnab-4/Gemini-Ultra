@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import storage from '@/utils/Storage'
 import { dataMigration } from '@/utils/migration'
 import { detectLanguage } from '@/utils/common'
-import { OldTextModel, OldVisionModel, type Model } from '@/constant/model'
+import { DefaultModel, LegacyTextModel, LegacyVisionModel } from '@/constant/model'
 
 interface SettingStore extends Setting {
   init: (isProtected: boolean) => Promise<Setting>
@@ -29,9 +29,9 @@ interface SettingStore extends Setting {
 const ASSISTANT_INDEX_URL = process.env.NEXT_PUBLIC_ASSISTANT_INDEX_URL
 
 function getDefaultModelConfig(model: string) {
-  if (OldTextModel.includes(model as Model)) {
+  if (LegacyTextModel.includes(model as (typeof LegacyTextModel)[number])) {
     return { topP: 1, topK: 16, temperature: 0.9, maxOutputTokens: 2048 }
-  } else if (OldVisionModel.includes(model as Model)) {
+  } else if (LegacyVisionModel.includes(model as (typeof LegacyVisionModel)[number])) {
     return { topP: 1, topK: 32, temperature: 0.4, maxOutputTokens: 4096 }
   } else {
     return { topP: 0.95, topK: 64, temperature: 1, maxOutputTokens: 8192 }
@@ -64,7 +64,7 @@ export const useSettingStore = create<SettingStore>((set) => ({
     const ttsLang = await storage.getItem<string>('ttsLang')
     const ttsVoice = await storage.getItem<string>('ttsVoice')
     const lang = (await storage.getItem<string>('lang')) || detectLanguage()
-    const model = (await storage.getItem<string>('model')) || 'gemini-1.5-flash-latest'
+    const model = (await storage.getItem<string>('model')) || DefaultModel
     const defaultModelConfig = getDefaultModelConfig(model)
     const state: Setting = {
       password: (await storage.getItem<string>('password')) || '',

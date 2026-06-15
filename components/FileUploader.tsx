@@ -6,7 +6,7 @@ import { encodeToken } from '@/utils/signature'
 import { fileUpload, imageUpload } from '@/utils/upload'
 import { useSettingStore } from '@/store/setting'
 import { useAttachmentStore } from '@/store/attachment'
-import { Model, OldVisionModel } from '@/constant/model'
+import { LegacyVisionModel } from '@/constant/model'
 import mimeType, { imageMimeType } from '@/constant/attachment'
 import { isFunction } from 'lodash-es'
 
@@ -21,7 +21,7 @@ function FileUploader({ beforeUpload, afterUpload }: Props) {
   const imageRef = useRef<HTMLInputElement>(null)
   const settingStore = useSettingStore()
   const isOldVisionModel = useMemo(() => {
-    return OldVisionModel.includes(settingStore.model as Model)
+    return LegacyVisionModel.includes(settingStore.model as (typeof LegacyVisionModel)[number])
   }, [settingStore.model])
 
   const handleError = useCallback(

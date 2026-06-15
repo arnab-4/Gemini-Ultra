@@ -1,7 +1,7 @@
 {
   "name": "Gemini-Ultra",
   "short_name": "Gemini-Ultra",
-  "description": "Deploy your private Gemini application for free with one click, supporting Gemini 1.5 Pro, Gemini 1.5 Flash, Gemini Pro and Gemini Pro Vision models.",
+  "description": "Deploy your private Gemini application for free with one click, supporting Gemini 3.5 Flash, Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 3.1 Flash-Lite and Gemini 2.5 Flash-Lite.",
   "id": "gemini-ultra",
   "scope": ".",
   "icons": [

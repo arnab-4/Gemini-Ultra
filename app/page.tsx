@@ -35,7 +35,7 @@ import type { FileManagerOptions } from '@/utils/FileManager'
 import { fileUpload, imageUpload } from '@/utils/upload'
 import { formatTime, readFileAsDataURL } from '@/utils/common'
 import { cn } from '@/utils'
-import { Model, OldVisionModel, OldTextModel } from '@/constant/model'
+import { DefaultModel, LegacyTextModel, LegacyVisionModel } from '@/constant/model'
 import mimeType from '@/constant/attachment'
 import { customAlphabet } from 'nanoid'
 import { isFunction, findIndex, pick, isUndefined } from 'lodash-es'
@@ -87,13 +87,16 @@ export default function Home() {
     }
   }, [status, t])
   const isOldVisionModel = useMemo(() => {
-    return OldVisionModel.includes(settingStore.model as Model)
+    return LegacyVisionModel.includes(settingStore.model as (typeof LegacyVisionModel)[number])
   }, [settingStore.model])
   const supportAttachment = useMemo(() => {
-    return !OldTextModel.includes(settingStore.model as Model)
+    return !LegacyTextModel.includes(settingStore.model as (typeof LegacyTextModel)[number])
   }, [settingStore.model])
   const supportSpeechRecognition = useMemo(() => {
-    return !OldTextModel.includes(settingStore.model as Model) && !OldVisionModel.includes(settingStore.model as Model)
+    return (
+      !LegacyTextModel.includes(settingStore.model as (typeof LegacyTextModel)[number]) &&
+      !LegacyVisionModel.includes(settingStore.model as (typeof LegacyVisionModel)[number])
+    )
   }, [settingStore.model])
   const isUploading = useMemo(() => {
     for (const file of attachmentStore.files) {
@@ -228,7 +231,7 @@ export default function Home() {
       const { ids, prompt } = summarizePrompt(messages, summary.ids, summary.content)
       await fetchAnswer({
         messages: [{ id: 'summary', role: 'user', parts: [{ text: prompt }] }],
-        model: Model['Gemini Pro'],
+        model: DefaultModel,
         onResponse: async (readableStream) => {
           const text = await streamToText(readableStream)
           summarizeChat(ids, text.trim())

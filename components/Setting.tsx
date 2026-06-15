@@ -14,7 +14,7 @@ import { Switch } from '@/components/ui/switch'
 import ResponsiveDialog from '@/components/ResponsiveDialog'
 import i18n from '@/plugins/i18n'
 import locales from '@/constant/locales'
-import { Model } from '@/constant/model'
+import { DefaultModel, DefaultModelList } from '@/constant/model'
 import { useSettingStore } from '@/store/setting'
 import { toPairs, values } from 'lodash-es'
 
@@ -54,39 +54,46 @@ function Setting({ open, hiddenTalkPanel, onClose }: SettingProps) {
     return new EdgeSpeech({ locale: ttsLang }).voiceOptions || []
   }, [ttsLang])
   const modelOptions = useMemo(() => {
-    const { setModel } = useSettingStore.getState()
-
     let modelList: string[] = []
-    let defaultModel = 'gemini-1.5-flash-latest'
-    const defaultModelList: string[] = Object.values(Model)
-    const userModels: string[] = GEMINI_MODEL_LIST ? GEMINI_MODEL_LIST.split(',') : []
+    const userModels: string[] = GEMINI_MODEL_LIST ? GEMINI_MODEL_LIST.split(',').map((item) => item.trim()) : []
 
     userModels.forEach((modelName) => {
+      if (modelName === '') return
       if (modelName === 'all' || modelName === '+all') {
-        for (const name of defaultModelList) {
+        for (const name of DefaultModelList) {
           if (!modelList.includes(name)) modelList.push(name)
         }
       } else if (modelName === '-all') {
-        modelList = modelList.filter((name) => !defaultModelList.includes(name))
+        modelList = modelList.filter((name) => !DefaultModelList.includes(name))
       } else if (modelName.startsWith('-')) {
         modelList = modelList.filter((name) => name !== modelName.substring(1))
-      } else if (modelName.startsWith('@')) {
-        const name = modelName.substring(1)
-        if (!modelList.includes(name)) modelList.push(name)
-        setModel(name)
-        defaultModel = name
       } else {
-        modelList.push(modelName.startsWith('+') ? modelName.substring(1) : modelName)
+        const name = modelName.startsWith('+') || modelName.startsWith('@') ? modelName.substring(1) : modelName
+        if (!modelList.includes(name)) modelList.push(name)
       }
     })
 
-    const models = modelList.length > 0 ? modelList : defaultModelList
-    if (!models.includes(defaultModel)) {
-      setModel(models[0])
-    }
-
-    return models
+    return modelList.length > 0 ? modelList : DefaultModelList
   }, [])
+
+  useEffect(() => {
+    const configuredDefault =
+      GEMINI_MODEL_LIST
+        ?.split(',')
+        .map((item) => item.trim())
+        .find((item) => item.startsWith('@'))
+        ?.substring(1) || DefaultModel
+    const nextModel = modelOptions.includes(settingStore.model)
+      ? settingStore.model
+      : modelOptions.includes(configuredDefault)
+        ? configuredDefault
+        : modelOptions[0]
+
+    if (nextModel && nextModel !== settingStore.model) {
+      settingStore.setModel(nextModel)
+      setModel(nextModel)
+    }
+  }, [modelOptions, settingStore])
 
   const handleSubmit = () => {
     if (password !== settingStore.password) settingStore.setPassword(password)

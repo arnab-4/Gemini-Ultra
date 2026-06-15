@@ -8,7 +8,7 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/xiangfa/talk-with-gemini)
 ![GitHub License](https://img.shields.io/github/license/Amery2010/TalkWithGemini)
 
-Deploy your private Gemini application for free with one click, supporting Gemini 1.5 Pro, Gemini 1.5 Flash, Gemini Pro, and Gemini Pro Vision models.
+Deploy your private Gemini application for free with one click, supporting current Gemini API models such as Gemini 3.5 Flash, Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 3.1 Flash-Lite, and Gemini 2.5 Flash-Lite.
 
 
 
@@ -20,9 +20,9 @@ A straightforward interface supporting image recognition and voice conversations
 
 
 
-![Gemini 1.5 Flash](./public/screenshots/pc-screenshot-1.png)
+![Gemini 3.5 Flash](./public/screenshots/pc-screenshot-1.png)
 
-Supports Gemini 1.5 and Gemini 1.5 Flash multimodal models.
+Supports current multimodal Gemini API models.
 
 A cross-platform application client with a persistent menu bar for enhanced productivity.
 
